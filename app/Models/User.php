@@ -46,8 +46,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    protected $softDeleted = true;
+
     public function isAdmin(){
         return $this->user_type === 1;
+    }
+
+    public function deactivate(){
+        $this->active = false;
     }
 
 }

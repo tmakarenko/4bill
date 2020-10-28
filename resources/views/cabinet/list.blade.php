@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
     <div class="col-8 offset-2">
-        <h1 class="text-center">General info</h1>
+        <h1 class="text-center">List of users</h1>
     </div>
     <div class="col-8 offset-2">
     <table class="table table-bordered">
@@ -11,7 +11,7 @@
             <th>#</th>
             <th>Name</th>
             <th>Email</th>
-            <th>Soft del</th>
+            <th>Active</th>
             <th>Action</th>
         </tr>
         @foreach($users as $user)
@@ -19,9 +19,9 @@
             <td>{{$user->name}}</td>
             <td>{{$user->name}}</td>
             <td>{{$user->email}}</td>
-            <td>{{$user->deleted_at}}</td>
+            <td>{{$user->active == true}}</td>
             <td>
-                @if(!$user->deleted_at && $user->id != auth()->user()->id)
+                @if($user->active && $user->id != auth()->user()->id)
                     <a type="button" class="btn btn-primary" href="/user/{{$user->id}}}/deactivate">Delete</a>
                 @endif
             </td>

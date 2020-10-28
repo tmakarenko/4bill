@@ -9,7 +9,7 @@ class UserController extends Controller
 {
     protected function deactivate(User $user){
         if($user->id != auth()->user()->id) {
-            $user->delete();
+            $user->deactivate();
             $user->save();
         }
         return back();

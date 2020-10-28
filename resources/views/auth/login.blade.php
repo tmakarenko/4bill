@@ -10,8 +10,19 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
-
+                        <div class="row">
+                            <div class="col-md-8 offset-2">
+                                @if (\Illuminate\Support\Facades\Session::has('alert-warning'))
+                                    <div class="alert alert-warning">
+                                        <ul>
+                                            <li>{!! \Illuminate\Support\Facades\Session::get('alert-warning') !!}</li>
+                                        </ul>
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
                         <div class="form-group row">
+
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
